@@ -26,6 +26,18 @@ function Post({ id, title, author, postPic, num_comments, score, postTime }) {
 
   const timeDifference = timeSince(postTime);
 
+  function formatNumber(number) {
+    if (number >= 1000) {
+      const formattedNumber = number / 1000;
+      return `${formattedNumber.toFixed(1)}k`;
+    }
+    return number.toString();
+  }
+
+  const formattedValue = formatNumber(parseInt(score, 10));
+
+  const formattedCommentValue = formatNumber(parseInt(num_comments, 10));
+
   return (
     <div className="showPost">
       <div className="post">
@@ -44,7 +56,7 @@ function Post({ id, title, author, postPic, num_comments, score, postTime }) {
               width="45px"
             />
           </button>
-          <div>{score}</div>
+          <div>{formattedValue}</div>
           <button>
             <img
               className="arrowDown"
@@ -65,7 +77,9 @@ function Post({ id, title, author, postPic, num_comments, score, postTime }) {
           <img src={postPic} alt="post pictuer" className="mainPic" />
           <hr />
           <div className="subPost">
-            <p>Post by {author}</p>
+            <p>
+              Post by <span>{author}</span>
+            </p>
             <p>{timeDifference}</p>
             <div className="commentButton">
               <img
@@ -73,7 +87,7 @@ function Post({ id, title, author, postPic, num_comments, score, postTime }) {
                 alt="keyboard arrow down"
                 width="30px"
               />
-              <p>{num_comments}</p>
+              <p>{formattedCommentValue}</p>
             </div>
           </div>
         </section>

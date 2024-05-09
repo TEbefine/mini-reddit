@@ -12,10 +12,6 @@ function MiniRedditPosts() {
   const subredditFeed = useSelector(selectSubredditFeed);
   const { isLoading, isError, error } = useSelector(selectPostsSlice);
 
-  useEffect(() => {
-    dispatch(fetchPosts({ subreddit: "dog", params: "limit=10" }));
-  }, [dispatch]);
-
   // Check if isLoading is true or if redditPosts is empty
   if (isLoading || !subredditFeed.length) {
     return (

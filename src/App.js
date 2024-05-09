@@ -8,7 +8,12 @@ function App() {
   return (
     <div className="App">
       <div>
-        <h1>Mini Reddit</h1>
+        <h1>
+          <span className="mini">
+            M<span className="logo">i</span>N<span className="logo">i</span>
+          </span>{" "}
+          redd<span className="logo">i</span>t
+        </h1>
       </div>
       <Nav />
       <MiniRedditPosts />

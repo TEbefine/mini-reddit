@@ -4,8 +4,86 @@
   box-sizing: border-box;
 }
 
+
 .App {
   text-align: center;
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Reset default browser styles */
+  
+  /* Basic styling */
+  border: 1px solid #fff;
+  border-radius: 30px;
+  padding: 15px 30px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  width: 2%;
+  cursor: pointer;
+  background-image: url('/public/img/list.png');
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: 60px 60px;
+}
+
+/* Optional: Style the arrow down icon */
+select::-ms-expand-downarrow {
+  /* Adjust color and positioning as needed */
+  color: #ccc;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease-in-out;
+}
+
+select:hover::-ms-expand-downarrow {
+  transform: rotate(180deg); /* Rotate on hover */
+}
+
+select:focus {
+  outline: none; /* Remove default outline */
+}
+
+.input-field {
+  border: none; /* Border color */
+  border-bottom: 5px solid #F23005;  /* Border radius */
+  padding: 8px; /* Padding */
+  font-size: 16px; /* Font size */
+  width: 200px; /* Width */
+  text-align: center;
+}
+
+.input-field::placeholder {
+  color: #999;
+}
+
+/* Optional: Focus style */
+.input-field:focus {
+  outline: none; /* Remove default outline */
+  border-color: #F23005; /* Change border color on focus */
+}
+
+.mini {
+  font-size: 2rem;
+}
+
+.logo {
+  color: #F23005;
 }
 
 /* Post formatt */
@@ -21,14 +99,14 @@
 .post {
   display: inline-flex;
   background-color: #fff; /* Set background color to white */
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Add subtle box shadow */
+  box-shadow: 0px 2px 10px rgba(242, 48, 4, 0.1); /* Add subtle box shadow */
   border-radius: 4px; /* Add rounded corners for card effect */
   transition: all 0.2s ease-in-out;
 }
 
 .post:hover {
   transform: translateY(-1px); /* Simulate floating effect on hover */
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); /* Increase shadow on hover */
+  box-shadow: 0px 4px 15px rgba(242, 48, 4, 0.2); /* Increase shadow on hover */
 }
 
 .headText {
@@ -46,6 +124,10 @@
   justify-content: space-between;
   align-items: center;
   margin: 0.5rem 0;
+}
+
+.subPost span {
+  color: #F23005;
 }
 
 .mainPic {
