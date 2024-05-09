@@ -18,8 +18,28 @@ export const fetchPosts = createAsyncThunk(
       const message = `An error has occured: ${response.status} ${error.message}`;
       throw new Error(message);
     }
+
     const data = await response.json();
-    return data;
+    // Filter posts with non-empty thumbnails
+    const postsWithPictures = data.data.children.filter(
+      (child) =>
+        child.data.thumbnail &&
+        child.data.thumbnail.trim() !== "" &&
+        !(
+          child.data.thumbnail.trim() === "self" ||
+          child.data.thumbnail.trim() === "default"
+        )
+    );
+
+    return postsWithPictures.map((child) => ({
+      id: child.data.id,
+      title: child.data.title,
+      author: child.data.author,
+      thumbnail: child.data.thumbnail,
+      num_comments: child.data.num_comments,
+      ups: child.data.ups,
+      created_utc: child.data.created_utc,
+    }));
   }
 );
 
@@ -37,15 +57,7 @@ const miniRedditPostsSlice = createSlice({
         const data = action.payload;
         state.isLoading = false;
         state.isError = false;
-        state.subredditFeed = data.data.children.map((child) => ({
-          id: child.data.id,
-          title: child.data.title,
-          author: child.data.author, // Added author
-          thumbnail: child.data.thumbnail, // Added thumbnail (might be empty)
-          num_comments: child.data.num_comments, // Added number of comments
-          ups: child.data.ups, // Added up votes
-          created_utc: child.data.created_utc, // Added time of post (in Unix timestamp)
-        }));
+        state.subredditFeed = action.payload;
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.isLoading = false;
@@ -56,8 +68,6 @@ const miniRedditPostsSlice = createSlice({
 });
 
 export const selectSubredditFeed = (state) => state.redditPosts.subredditFeed;
-export const selectIsLoading = (state) => state.redditPosts.isLoading;
-export const selectIsError = (state) => state.redditPosts.isError;
-export const selectError = (state) => state.redditPosts.error;
+export const selectPostsSlice = (state) => state.redditPosts;
 
 export default miniRedditPostsSlice.reducer;

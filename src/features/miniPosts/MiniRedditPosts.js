@@ -2,21 +2,18 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchPosts,
-  selectError,
-  selectIsError,
-  selectIsLoading,
+  selectPostsSlice,
   selectSubredditFeed,
 } from "./miniRedditPostsSlice";
+import Post from "../../component/Post";
 
 function MiniRedditPosts() {
   const dispatch = useDispatch();
   const subredditFeed = useSelector(selectSubredditFeed);
-  const isLoading = useSelector(selectIsLoading);
-  const isError = useSelector(selectIsError);
-  const error = useSelector(selectError);
+  const { isLoading, isError, error } = useSelector(selectPostsSlice);
 
   useEffect(() => {
-    dispatch(fetchPosts({ subreddit: "all", params: "limit=5" }));
+    dispatch(fetchPosts({ subreddit: "dog", params: "limit=10" }));
   }, [dispatch]);
 
   // Check if isLoading is true or if redditPosts is empty
@@ -36,14 +33,18 @@ function MiniRedditPosts() {
     );
   }
 
-  // Once isLoading is false and redditPosts is populated, render the posts
   return (
     <div className="App">
       {subredditFeed.map((post) => (
-        <div key={post.id}>
-          <h2>{post.title}</h2>
-          <p>{post.subreddit}</p>
-        </div>
+        <Post
+          id={post.id}
+          title={post.title}
+          author={post.author}
+          postPic={post.thumbnail}
+          num_comments={post.num_comments}
+          score={post.ups}
+          postTime={post.created_utc}
+        />
       ))}
     </div>
   );

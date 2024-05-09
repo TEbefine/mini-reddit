@@ -7,3 +7,120 @@
 .App {
   text-align: center;
 }
+
+/* Post formatt */
+.showPost {
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.showPost hr {
+  opacity: 0.3;
+}
+
+.post {
+  display: inline-flex;
+  background-color: #fff; /* Set background color to white */
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Add subtle box shadow */
+  border-radius: 4px; /* Add rounded corners for card effect */
+  transition: all 0.2s ease-in-out;
+}
+
+.post:hover {
+  transform: translateY(-1px); /* Simulate floating effect on hover */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); /* Increase shadow on hover */
+}
+
+.headText {
+  text-align: start;
+}
+
+.mainPost {
+  width: 50vh;
+  display: grid;
+  margin: 1.5rem 1rem 1rem 0.5rem;
+}
+
+.subPost {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.mainPic {
+  width: 98%;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  border-radius: 10px;
+  margin: 1.5rem 0;
+}
+
+/* Make transition arrow */
+.arrowUp {
+  position: absolute;
+}
+
+.arrowDown {
+  position: absolute;
+}
+
+.post button {
+  background-color: transparent; /* Remove background color */
+  border: none; /* Remove border */
+  padding: 0; /* Optional: Remove default padding */
+  cursor: pointer;
+}
+
+.post button img {
+  transition: all 0.2s ease-in-out; 
+}
+
+.post button .arrowUp {
+  opacity: 0;
+}
+
+.post button .arrowDropUp {
+  opacity: 0.8;
+}
+
+.post button:hover .arrowUp { 
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+.post button:hover .arrowDropUp {
+  transform: translateY(-2px);
+  opacity: 0; 
+}
+
+.post button .arrowDown {
+  opacity: 0;
+}
+
+.post button .arrowDropDown {
+  opacity: 0.8;
+}
+
+.post button:hover .arrowDown { 
+  opacity: 1;
+  transform: translateY(5px);
+}
+
+.post button:hover .arrowDropDown {
+  transform: translateY(2px);
+  opacity: 0; 
+}
+
+/* comment */
+.commentButton {
+  display: flex;
+  align-items: center;
+}
+
+/* form post */
+.upDown {
+  margin-top: 1rem;
+  margin-left: 0.6rem;
+}
