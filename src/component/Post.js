@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchComments } from "../features/miniComments/miniCommentsSlice.js";
-import Comment from "./Comment.js";
+import Comment from "./Comments.js";
 
 function Post({ id, title, author, postPic, num_comments, score, postTime }) {
   const [upScore, setUpScore] = useState(score);
