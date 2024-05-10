@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { fetchPosts } from "../features/miniPosts/miniRedditPostsSlice";
 
 function Nav() {
-  const [selection, setSelection] = useState("DIY");
+  const [selection, setSelection] = useState("dog");
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
 
@@ -30,6 +30,8 @@ function Nav() {
         <option value="">Category</option>
         <option value="Home">Home</option>
         <option value="Animals">Animals</option>
+        <option value="Cat">Cat</option>
+        <option value="Dog">Dog</option>
         <option value="DIY">DIY</option>
         <option value="Gaming">Gaming</option>
         <option value="Learning">Learning</option>
