@@ -217,11 +217,54 @@ select:focus {
 /* comment */
 .commentButton {
   display: flex;
-  align-items: center;
+}
+
+.commentButton p {
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-size: 17px;
+  align-self: center;
+  margin-left: 0.3rem;
+}
+
+.commentButton img{
+  opacity: 0.7;
 }
 
 /* form post */
 .upDown {
   margin-top: 1rem;
   margin-left: 0.6rem;
+}
+
+/* make comment */
+.commentsSec {
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.textComment {
+  text-align: start;
+  margin-bottom: 2rem;
+}
+
+ul {
+  list-style-type: none; /* Remove bullets for all list items */
+}
+
+/* Alternatively, target specific list items */
+li.no-bullet {
+  list-style-type: none;
+}
+
+.commentsSec h5 {
+  color: #F23005;
+  font-size: 18px;
+  margin-bottom: 0.7rem;
+}
+
+.commentsSec p {
+  /* Specific styling for comment text */
+  line-height: 1.6; /* Adjust line spacing for readability */
 }

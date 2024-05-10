@@ -1,9 +1,14 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { fetchComments } from "../features/miniComments/miniCommentsSlice.js";
+import Comment from "./Comment.js";
 
 function Post({ id, title, author, postPic, num_comments, score, postTime }) {
   const [upScore, setUpScore] = useState(score);
   const [clicked, setClicked] = useState(false);
   const [downClicked, setDownClicked] = useState(false);
+  const [showComments, setShowComments] = useState(false);
+  const dispatch = useDispatch();
 
   function timeSince(timeInEpoch) {
     const now = Date.now();
@@ -64,6 +69,13 @@ function Post({ id, title, author, postPic, num_comments, score, postTime }) {
     setDownClicked(!downClicked);
   }
 
+  function handleComments() {
+    setShowComments(!showComments);
+    if (!showComments) {
+      dispatch(fetchComments(id));
+    }
+  }
+
   return (
     <div className="showPost">
       <div className="post">
@@ -109,15 +121,18 @@ function Post({ id, title, author, postPic, num_comments, score, postTime }) {
               Post by <span>{author}</span>
             </p>
             <p>{timeDifference}</p>
-            <div className="commentButton">
-              <img
-                src="/img/chat_bubble.png"
-                alt="keyboard arrow down"
-                width="30px"
-              />
-              <p>{formattedCommentValue}</p>
+            <div>
+              <button className="commentButton" onClick={handleComments}>
+                <img
+                  src="/img/chat_bubble.png"
+                  alt="keyboard arrow down"
+                  width="25px"
+                />
+                <p>{formattedCommentValue}</p>
+              </button>
             </div>
           </div>
+          {showComments && <Comment />}
         </section>
       </div>
     </div>

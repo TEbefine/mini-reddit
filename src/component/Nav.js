@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { fetchPosts } from "../features/miniPosts/miniRedditPostsSlice";
 
 function Nav() {
-  const [selection, setSelection] = useState("cat");
+  const [selection, setSelection] = useState("DIY");
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
 
@@ -28,10 +28,40 @@ function Nav() {
         onChange={(e) => setSelection(e.target.value)}
       >
         <option value="">Category</option>
-        <option value="dog">Dog</option>
-        <option value="cat">cat</option>
-        <option value="blackpink">blackpink</option>
-        {/* Add more options as needed */}
+        <option value="Home">Home</option>
+        <option value="Animals">Animals</option>
+        <option value="DIY">DIY</option>
+        <option value="Gaming">Gaming</option>
+        <option value="Learning">Learning</option>
+        <option value="Lifehacks">Lifehacks</option>
+        <option value="Music">Music</option>
+        <option value="Android">Android</option>
+        <option value="Apple">Apple</option>
+        <option value="Asia">Asia</option>
+        <option value="ArianaGrande">ArianaGrande</option>
+        <option value="Bitcoin">Bitcoin</option>
+        <option value="Anime">Anime</option>
+        <option value="Blackpink">Blackpink</option>
+        <option value="Books">Books</option>
+        <option value="Drawing">Drawing</option>
+        <option value="Nasa">Nasa</option>
+        <option value="chatGPT">chatGPT</option>
+        <option value="Funny">Funny</option>
+        <option value="Korea">Korea</option>
+        <option value="Space">Space</option>
+        <option value="OnePiece">OnePiece</option>
+        <option value="Nvidia">Nvidia</option>
+        <option value="Ghibli">Ghibli</option>
+        <option value="TaylorSwift">TaylorSwift</option>
+        <option value="NintendoSwitch">NintendoSwitch</option>
+        <option value="Teslamotors">Teslamotors</option>
+        <option value="Technology">Technology</option>
+        <option value="Beyonce">Beyonce</option>
+        <option value="Boardgames">Boardgames</option>
+        <option value="Amd">Amd</option>
+        <option value="Design">Design</option>
+        <option value="Sciencememes">Sciencememes</option>
+        <option value="Youtube">Youtube</option>
       </select>
       <form onSubmit={handleSubmit}>
         <input

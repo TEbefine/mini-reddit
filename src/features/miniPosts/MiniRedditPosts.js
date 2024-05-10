@@ -1,14 +1,9 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchPosts,
-  selectPostsSlice,
-  selectSubredditFeed,
-} from "./miniRedditPostsSlice";
+import React from "react";
+import { useSelector } from "react-redux";
+import { selectPostsSlice, selectSubredditFeed } from "./miniRedditPostsSlice";
 import Post from "../../component/Post";
 
 function MiniRedditPosts() {
-  const dispatch = useDispatch();
   const subredditFeed = useSelector(selectSubredditFeed);
   const { isLoading, isError, error } = useSelector(selectPostsSlice);
 

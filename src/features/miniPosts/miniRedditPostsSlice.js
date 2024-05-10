@@ -54,7 +54,6 @@ const miniRedditPostsSlice = createSlice({
         state.isError = false;
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
-        const data = action.payload;
         state.isLoading = false;
         state.isError = false;
         state.subredditFeed = action.payload;
