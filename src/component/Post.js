@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchComments } from "../features/miniComments/miniCommentsSlice.js";
-import Comment from "./Comments.js";
+// import Comment from "./Comments.js";
 
 function Post({ id, title, author, postPic, num_comments, score, postTime }) {
   const [upScore, setUpScore] = useState(score);
@@ -132,7 +132,12 @@ function Post({ id, title, author, postPic, num_comments, score, postTime }) {
               </button>
             </div>
           </div>
-          {showComments && <Comment />}
+          {showComments && (
+            <h4 className="inform">
+              This feature is currently under development and will be available
+              in a future update. Thank you for your patience!
+            </h4>
+          )}
         </section>
       </div>
     </div>

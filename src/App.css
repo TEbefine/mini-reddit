@@ -268,3 +268,7 @@ li.no-bullet {
   /* Specific styling for comment text */
   line-height: 1.6; /* Adjust line spacing for readability */
 }
+
+.inform {
+  margin: 2rem;
+}
