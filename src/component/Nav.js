@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { fetchPosts } from "../features/miniPosts/miniRedditPostsSlice";
 
 function Nav() {
-  const [selection, setSelection] = useState("NBA");
+  const [selection, setSelection] = useState("cat");
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
 

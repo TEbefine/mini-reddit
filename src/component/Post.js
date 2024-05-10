@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Post({ id, title, author, postPic, num_comments, score, postTime }) {
+  const [upScore, setUpScore] = useState(score);
+  const [clicked, setClicked] = useState(false);
+  const [downClicked, setDownClicked] = useState(false);
+
   function timeSince(timeInEpoch) {
     const now = Date.now();
     const difference = now - timeInEpoch * 1000; // Convert epoch to milliseconds
@@ -34,38 +38,62 @@ function Post({ id, title, author, postPic, num_comments, score, postTime }) {
     return number.toString();
   }
 
-  const formattedValue = formatNumber(parseInt(score, 10));
+  const formattedValue = formatNumber(parseInt(upScore, 10));
 
   const formattedCommentValue = formatNumber(parseInt(num_comments, 10));
+
+  function handleClick() {
+    if (!clicked) {
+      setUpScore((prevScore) => prevScore + 1);
+      setClicked(!clicked);
+    } else if (clicked) {
+      setUpScore((prevScore) => prevScore - 1);
+      setClicked(!clicked);
+    }
+    if (downClicked) {
+      setDownClicked(!downClicked);
+      setClicked(!clicked);
+    }
+  }
+
+  function handleDownClick() {
+    if (clicked) {
+      setUpScore((prevScore) => prevScore - 1);
+      setClicked(!clicked);
+    }
+    setDownClicked(!downClicked);
+  }
 
   return (
     <div className="showPost">
       <div className="post">
         <div className="upDown">
-          <button>
+          <button onClick={handleClick}>
             <img
-              className="arrowUp"
+              className={`${clicked ? "hasClick" : "arrowUp"}`}
               src="/img/keyboard_arrow_up.png"
               alt="keyboard arrow up"
               width="45px"
             />
             <img
-              className="arrowDropUp"
+              className={`${clicked ? "hasClickArrow" : "arrowDropUp"}`}
               src="/img/arrow_drop_up.png"
               alt="arrow drop up"
               width="45px"
             />
           </button>
           <div>{formattedValue}</div>
-          <button>
+          <button onClick={handleDownClick}>
             <img
-              className="arrowDown"
+              className={`${downClicked ? "hasDownClick" : "arrowDown"}`}
               src="/img/keyboard_arrow_down.png"
               alt="keyboard arrow down"
               width="45px"
             />
             <img
-              className="arrowDropDown"
+              className={`${
+                downClicked ? "hasDownClickArrow" : "arrowDropDown"
+              }`}
               src="/img/arrow_drop_down.png"
               alt="arrow drop down"
               width="45px"
